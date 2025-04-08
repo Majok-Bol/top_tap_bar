@@ -7,10 +7,15 @@ class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(title: Text('Side menu',style: TextStyle(color: Colors.white,fontSize: 25),),centerTitle: true,backgroundColor: Colors.purple,),
-        drawer:Drawer(
-          child: ListView(
+        drawer:Container(
+          padding: EdgeInsets.all(0),
+          width: 190,
+          // height: 80,
+          child: Drawer(
+            child: ListView(
           children: [
             DrawerHeader(
               decoration: BoxDecoration(
@@ -18,20 +23,23 @@ class MyApp extends StatelessWidget{
               ),
               child: Text('Menu'),
             ),
-            ListTile(title: Text('Home'),),
-            ListTile(title: Text('Settings'),),
-            ListTile(title: Text('Logout'),),
-            ListTile(title: Text('My Account'),),
+            ListTile(title: Text('Home'),onTap: (){
+              Navigator.pop(context);
+            },),
+            ListTile(title: Text('Settings'),onTap: (){
+              Navigator.pop(context);
+            },),
+            ListTile(title: Text('Logout'),onTap: (){
+              Navigator.pop(context);
+            },),
+            ListTile(title: Text('My Account'),onTap: (){
+              Navigator.pop(context);
+            },),
           ],
         ),
+      ),
         ),
-        body:ListView.builder(
-          itemCount: 40,
-          itemBuilder: (context,index){
-            return ListTile(
-              title: Text('Item: ${index+1}'),
-            );
-          }),
+        body: const Center(child: Text('Main Content')),
       ),
     );
   }
